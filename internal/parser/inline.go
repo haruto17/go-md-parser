@@ -77,3 +77,22 @@ func mergeTextTokens(tokens []InlineToken) []InlineToken {
 	merged = append(merged, current)
 	return merged
 }
+
+func RenderInline(tokens []InlineToken) string {
+	var b strings.Builder
+
+	for _, token := range tokens {
+		switch token.Type {
+		case TokenText:
+			b.WriteString(token.Text)
+		case TokenEmphasis:
+			b.WriteString("<em>" + token.Text + "</em>")
+		case TokenStrong:
+			b.WriteString("<strong>" + token.Text + "</strong>")
+		case TokenCode:
+			b.WriteString("<code>" + token.Text + "</code>")
+		}
+	}
+
+	return b.String()
+}
