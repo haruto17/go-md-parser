@@ -19,7 +19,7 @@ func Parse(input string) string {
 			continue
 		}
 
-		out = append(out, "<p>"+line+"</p>")
+		out = append(out, renderParagraph(line))
 	}
 
 	return strings.Join(out, "\n")

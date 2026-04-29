@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	input := "# h1\n\n## h2\n\n### h3\n\n#### h4\n\n##### h5\n\n###### h6\n\nThis is *Markdown*."
+	input := "# h1\n\nThis is *Markdown* with **strong** and `code`."
 	html := parser.Parse(input)
 	fmt.Println(html)
 }
