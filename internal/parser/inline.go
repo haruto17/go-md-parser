@@ -96,3 +96,7 @@ func RenderInline(tokens []InlineToken) string {
 
 	return b.String()
 }
+
+func renderParagraph(line string) string {
+	return "<p>" + RenderInline(TokenizeInline(line)) + "</p>"
+}
