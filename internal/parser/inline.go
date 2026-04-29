@@ -54,3 +54,26 @@ func TokenizeInline(input string) []InlineToken {
 
 	return mergeTextTokens(tokens)
 }
+
+func mergeTextTokens(tokens []InlineToken) []InlineToken {
+	if len(tokens) == 0 {
+		return nil
+	}
+
+	var merged []InlineToken
+	current := tokens[0]
+
+	for i := 1; i < len(tokens); i++ {
+		t := tokens[i]
+		if current.Type == TokenText && t.Type == TokenText {
+			current.Text += t.Text
+			continue
+		}
+
+		merged = append(merged, current)
+		current = t
+	}
+
+	merged = append(merged, current)
+	return merged
+}
